@@ -18,10 +18,11 @@
   const short = m => m < 1000 ? `${Math.round(m / 10) * 10} m` : `${(m / 1000).toFixed(1)} km`;
   const POI_INDEX = new Map(POIS.map((p, i) => [p, i]));
 
-  // CARTO's free basemap rather than tile.openstreetmap.org, whose policy discourages app use.
-  const tiles = () => L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    maxZoom: 20, subdomains: 'abcd',
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+  // OpenStreetMap's own tiles: fine for a light-traffic site that shows attribution.
+  // (CARTO's basemaps now need an API key and serve a placeholder without one.)
+  const tiles = () => L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   });
   const map = L.map('map').setView(CENTRE, 12);
   tiles().addTo(map);
@@ -385,7 +386,7 @@
     const label = i => i === 0 ? 'S' : i === r.length - 1 ? (end ? 'E' : 'S') : String(i);
     el.innerHTML = `<h2>${stops.length} stops · ${fmt(metres)}</h2>
       <p class="muted">About ${Math.round(metres / WALK / 60 * 10) / 10} hours walking, not counting stops${direct ? ` · the direct route is ${fmt(direct)}` : ''}.
-      Maps © OpenStreetMap contributors © CARTO.</p>`;
+      Maps © OpenStreetMap contributors.</p>`;
     add(`<div class="istop terminal">${pinHtml('S')}<h3>Start</h3></div>`);
     legs.forEach((leg, i) => {
       const a = r[i], b = r[i + 1];

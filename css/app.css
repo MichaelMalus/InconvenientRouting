@@ -1,4 +1,5 @@
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 :root { --accent: #c0392b; --line: #ddd; --muted: #666; --bg: #fff; --card: #f7f7f7; }
 html, body { margin: 0; height: 100%; font: 14px/1.4 system-ui, sans-serif; color: #222; background: var(--bg); }
 body { display: flex; flex-direction: column; }

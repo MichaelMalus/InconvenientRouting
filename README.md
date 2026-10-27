@@ -44,7 +44,7 @@ serving it is how it has been tested.)
 
 All free and keyless; please be gentle with them.
 
-- Map tiles: [CARTO](https://carto.com/attributions) basemaps, from OpenStreetMap data
+- Map tiles: [OpenStreetMap](https://operations.osmfoundation.org/policies/tiles/) standard tiles
 - Walking routes: [FOSSGIS OSRM](https://routing.openstreetmap.de/) (results are cached in the browser)
 - Photos and descriptions: Wikipedia, Wikidata, Wikimedia Commons
 - Postcodes: [postcodes.io](https://postcodes.io/)
